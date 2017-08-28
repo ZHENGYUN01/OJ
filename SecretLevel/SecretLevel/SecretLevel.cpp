@@ -153,7 +153,7 @@ void printSecretLevel(const int & score)
 int _tmain(int argc, _TCHAR* argv[])
 {
 	
-	char* secret = "38$@NoNoNo";
+	char* secret = "NoNoNo";
 	int score = checkSecretLevel(secret);
 	printSecretLevel(score);
 
