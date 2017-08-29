@@ -21,7 +21,7 @@ bool haveSubstr(string &s)
 
 	for(int i = 0; i < (int)s.length() - 1; i++)
 	{	
-		for(int j = i + 1; j < (int)s.length(); j++)
+		for(int j = i + 2; j < (int)s.length(); j++)
 		{
 			p = phead + i;
 			q = phead + j;
@@ -56,11 +56,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	vector<string> result;
 
 	string str;
-	int trialNum = 4;
 
-	while(trialNum--)
+	while(cin>>str)
 	{
-		cin>>str;
+		
 		len = (int)str.length();
 
 		char *p = &str[0];
