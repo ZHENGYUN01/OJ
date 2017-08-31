@@ -39,8 +39,9 @@ bool haveSubstr(string &s)
 				else
 					break; 
 			}
+			cnt = 0;
 		}
-		cnt = 0;
+
 	}
 	return false;
 }
@@ -81,11 +82,16 @@ int _tmain(int argc, _TCHAR* argv[])
 			|| ((numCnt >= 1) && (smallCaseCnt >= 1) && (charCnt >= 1)) 
 			|| ((numCnt >= 1) && (bigCaseCnt >= 1) && (charCnt >= 1))
 			|| (smallCaseCnt >= 1) && (bigCaseCnt >= 1) && (charCnt >= 1))
-			&& len >= 8 
+			&& len > 8 
 			&& !have)
 			result.push_back("OK");
 		else
 			result.push_back("NG");
+
+		numCnt = 0;
+		smallCaseCnt = 0;
+		bigCaseCnt = 0;
+		charCnt = 0;
 	}
 
 	for(vector<string>::iterator iter = result.begin(); iter != result.end(); iter++)
