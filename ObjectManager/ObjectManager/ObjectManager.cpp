@@ -88,29 +88,16 @@ int DeleteObject(unsigned int key1, unsigned int key2, unsigned int key3)
 	if(!IsObjectExist(key1, key2, key3) && !haveGenChar(key1, key2, key3))
 		return -1;
 
-	KEY key = {key1, key2, key3};
-
 	vector<KEY>::iterator iter = g_Object.begin();
 	while(iter != g_Object.end())
 	{
-		if((*iter).key1 == key1 && (*iter).key2 == key2 && (*iter).key3 == key3)
-		{	g_Object.erase(iter);continue;}
-
-		if(4294967295 == key1 && (*iter).key2 == key2 && (*iter).key3 == key3)
-			{	g_Object.erase(iter);continue;}
-		if(key1 == (*iter).key1 && key2 == 4294967295 && key3 == (*iter).key3)
-			{	g_Object.erase(iter);continue;}
-		if(key1 == (*iter).key1 && key2 == (*iter).key2 && key3 == 4294967295)
-			{	g_Object.erase(iter);continue;}
-		if(key1 == 4294967295 && key2 == 4294967295 && key3 == (*iter).key3)
-			{	g_Object.erase(iter);continue;}
-		if(key1 == 4294967295 && key2 == (*iter).key2 && key3 == 4294967295)
-			{	g_Object.erase(iter);continue;}
-		if(key1 == (*iter).key1 && key2 == 4294967295 && key3 == 4294967295)
-			{	g_Object.erase(iter);continue;}
-		if(key1 == 4294967295 && key2 == 4294967295 && key3 == 4294967295)
-			{	g_Object.erase(iter);continue;}
-		++iter;
+		if(((4294967295 == key1) || ((*iter).key1 == key1))  
+			&& (((*iter).key2 == key2) || (4294967295 == key2)) 
+			&& (((*iter).key3 == key3) || (4294967295 == key3)))
+		{	
+			g_Object.erase(iter);
+			continue;
+		}
 	}
 	
 	return 0;
@@ -163,7 +150,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	cout<<IsObjectExist(1, 1, 1)<<endl;
 	cout<<IsObjectExist(1, 2, 3)<<endl;
 	
-	DeleteObject(1,2,3);
+	DeleteObject(1,1,1);
 	DeleteObject(1,1,1);
 	DeleteObject(3, 0xFFFFFFFF, 2);
 
